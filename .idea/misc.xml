@@ -10,7 +10,9 @@
         <entry key="../../../../../layout/compose-model-1655549182896.xml" value="1.0" />
         <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_container.xml" value="0.11927083333333334" />
+        <entry key="app/src/main/res/layout/fragment_container2.xml" value="0.1953125" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.20108695652173914" />
+        <entry key="app/src/main/res/layout/fragment_second.xml" value="0.20520833333333333" />
       </map>
     </option>
   </component>

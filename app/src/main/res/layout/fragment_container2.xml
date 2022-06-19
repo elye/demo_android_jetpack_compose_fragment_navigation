@@ -7,10 +7,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello 111" />
+        android:text="Hello 222" />
 
     <FrameLayout
-        android:background="@color/teal_200"
+        android:background="@color/purple_200"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -21,6 +21,6 @@
 <!--        android:id="@+id/fragment_container_view"-->
 <!--        android:layout_height="match_parent"-->
 <!--        android:layout_width="match_parent"-->
-<!--        android:name="com.example.myapplication.FirstFragment" />-->
+<!--        android:name="com.example.myapplication.SecondFragment" />-->
 
 </LinearLayout>

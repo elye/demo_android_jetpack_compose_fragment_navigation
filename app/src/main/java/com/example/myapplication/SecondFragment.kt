@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-class FirstFragment: Fragment(R.layout.fragment_first) {
+class SecondFragment: Fragment(R.layout.fragment_second) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("Track", "I am onViewCreated")
+        Log.d("Track", "I am onViewCreated 2")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.d("Track", "I am onResume")
+        Log.d("Track", "I am onResume 2")
     }
 }
