@@ -1,11 +1,9 @@
 package com.example.myapplication
 
+import android.util.Log
 import android.view.View
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.fragment.app.FragmentContainerView
@@ -31,8 +29,10 @@ fun FragmentContainer(
             if (!initialized) {
                 fragmentManager.commit { commit(view.id) }
                 initialized = true
+                Log.d("Track", "Initialized")
             } else {
                 fragmentManager.onContainerAvailable(view)
+                Log.d("Track", "Else Initialized")
             }
         }
     )
