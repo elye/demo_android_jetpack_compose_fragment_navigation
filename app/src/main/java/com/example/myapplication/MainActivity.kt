@@ -12,6 +12,8 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -62,24 +64,27 @@ fun MainScreen(supportFragmentManager: FragmentManager) {
 fun Navigation(navController: NavHostController,
                supportFragmentManager: FragmentManager,
                padding: PaddingValues) {
+    var initialized1 by rememberSaveable { mutableStateOf(false) }
+    var initialized2 by rememberSaveable { mutableStateOf(false) }
     NavHost(navController, startDestination = NavigationItem.Home.route) {
         composable(NavigationItem.Home.route) {
             HomeScreen()
         }
         composable(NavigationItem.Music.route) {
             MusicScreen()
-            AndroidViewBinding(FragmentContainerBinding::inflate) {
-                supportFragmentManager.beginTransaction().replace(R.id.container, FirstFragment()).commit()
-//                val myFragment = fragmentContainerView
-
-            }
+            FragmentContainer(
+                modifier = Modifier.fillMaxSize(),
+                fragmentManager = supportFragmentManager,
+                commit = { add(it, FirstFragment()) }
+            )
         }
         composable(NavigationItem.Movies.route) {
             MoviesScreen()
-            AndroidViewBinding(FragmentContainerBinding::inflate) {
-                supportFragmentManager.beginTransaction().replace(R.id.container, SecondFragment()).commit()
-//                val myFragment = fragmentContainerView
-            }
+            FragmentContainer(
+                modifier = Modifier.fillMaxSize(),
+                fragmentManager = supportFragmentManager,
+                commit = { add(it, SecondFragment()) }
+            )
         }
         composable(NavigationItem.Books.route) {
             BooksScreen()
