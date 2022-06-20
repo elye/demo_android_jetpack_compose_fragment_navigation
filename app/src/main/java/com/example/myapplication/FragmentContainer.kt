@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -18,32 +19,16 @@ fun FragmentContainer(
     commit: FragmentTransaction.(containerId: Int) -> Unit
 ) {
     val containerId by rememberSaveable { mutableStateOf(View.generateViewId()) }
-    var initialized by rememberSaveable { mutableStateOf(false) }
     AndroidView(
         modifier = modifier,
         factory = { context ->
-            FragmentContainerView(context)
-                .apply { id = containerId }
-        },
-        update = { view ->
-            if (!initialized) {
-                fragmentManager.commit { commit(view.id) }
-                initialized = true
-                Log.d("Track", "Initialized")
-            } else {
-                fragmentManager.onContainerAvailable(view)
-                Log.d("Track", "Else Initialized")
-            }
+            fragmentManager.findFragmentById(containerId)?.view
+                ?.also { (it.parent as? ViewGroup)?.removeView(it) }
+                ?: FragmentContainerView(context)
+                    .apply { id = containerId }
+                    .also {
+                        fragmentManager.commit { commit(it.id) }
+                    }
         }
     )
-}
-
-/** Access to package-private method in FragmentManager through reflection */
-private fun FragmentManager.onContainerAvailable(view: FragmentContainerView) {
-    val method = FragmentManager::class.java.getDeclaredMethod(
-        "onContainerAvailable",
-        FragmentContainerView::class.java
-    )
-    method.isAccessible = true
-    method.invoke(this, view)
 }
