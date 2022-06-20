@@ -62,23 +62,28 @@ fun Navigation(navController: NavHostController,
         composable(NavigationItem.Music.route) {
 //            MusicScreen()
             Log.d("Track", "Hello 1")
+//            AndroidViewBinding(FragmentContainerBinding::inflate)
             FragmentContainer(
                 modifier = Modifier.fillMaxSize(),
                 fragmentManager = supportFragmentManager,
-                commit = { add(it, FirstFragment()) }
+                commit = { add(it, ContainerFragment.newInstance("Music", "#FFFF00")) }
             )
         }
         composable(NavigationItem.Movies.route) {
 //            MoviesScreen()
-            Log.d("Track", "Hello 2")
+//            Log.d("Track", "Hello 2")
             FragmentContainer(
                 modifier = Modifier.fillMaxSize(),
                 fragmentManager = supportFragmentManager,
-                commit = { add(it, SecondFragment()) }
+                commit = { add(it, ContainerFragment.newInstance("Movies", "#FF00FF")) }
             )
         }
         composable(NavigationItem.Books.route) {
-            BooksScreen()
+            FragmentContainer(
+                modifier = Modifier.fillMaxSize(),
+                fragmentManager = supportFragmentManager,
+                commit = { add(it, ContainerFragment.newInstance("Books", "#00FFFF")) }
+            )
         }
         composable(NavigationItem.Profile.route) {
             ProfileScreen()
@@ -90,5 +95,5 @@ fun Navigation(navController: NavHostController,
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-//    MainScreen()
+//    MainScreen(supportFragmentManager)
 }

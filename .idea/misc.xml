@@ -8,8 +8,12 @@
         <entry key="../../../../../layout/compose-model-1655547557765.xml" value="0.1947502116850127" />
         <entry key="../../../../../layout/compose-model-1655548531605.xml" value="1.0" />
         <entry key="../../../../../layout/compose-model-1655549182896.xml" value="1.0" />
+        <entry key="../../../../../layout/compose-model-1655725995388.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1655726289104.xml" value="1.0" />
         <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_child.xml" value="0.21510416666666668" />
         <entry key="app/src/main/res/layout/fragment_container.xml" value="0.11927083333333334" />
+        <entry key="app/src/main/res/layout/fragment_container1.xml" value="0.21510416666666668" />
         <entry key="app/src/main/res/layout/fragment_container2.xml" value="0.1953125" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.20108695652173914" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.20520833333333333" />
