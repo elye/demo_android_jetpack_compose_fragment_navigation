@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,4 +52,20 @@ class ContainerFragment : Fragment() {
 
         childFragmentManager.addOnBackStackChangedListener { count = childFragmentManager.backStackEntryCount }
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d("Track", "ContainerFragment onSaveInstanceState")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("Track", "ContainerFragment onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("Track", "ContainerFragment onStop")
+    }
+
 }

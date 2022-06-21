@@ -10,12 +10,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 
-sealed class NavigationItem(var route: String, var icon: Int, var title: String) {
-    object Home : NavigationItem("home", R.drawable.ic_home, "Home")
-    object Music : NavigationItem("music", R.drawable.ic_music, "Music")
-    object Movies : NavigationItem("movies", R.drawable.ic_movie, "Movies")
-    object Books : NavigationItem("books", R.drawable.ic_book, "Books")
-    object Profile : NavigationItem("profile", R.drawable.ic_profile, "Profile")
+sealed class NavigationItem(var route: String, var index: Int, var icon: Int, var title: String) {
+    object Home : NavigationItem("home", 0, R.drawable.ic_home, "Home")
+    object Music : NavigationItem("music", 1, R.drawable.ic_music, "Music")
+    object Movies : NavigationItem("movies", 2, R.drawable.ic_movie, "Movies")
+    object Books : NavigationItem("books", 3, R.drawable.ic_book, "Books")
+    object Profile : NavigationItem("profile", 4, R.drawable.ic_profile, "Profile")
 }
 
 @Composable

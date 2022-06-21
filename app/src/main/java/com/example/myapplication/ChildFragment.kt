@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,5 +30,20 @@ class ChildFragment : Fragment() {
         arguments?.let {
             view.findViewById<TextView>(R.id.child_text_title).text = it.getString(KEY)
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d("Track", "ChildFragment onSaveInstanceState")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("Track", "ChildFragment onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d("Track", "ChildFragment onStop")
     }
 }
