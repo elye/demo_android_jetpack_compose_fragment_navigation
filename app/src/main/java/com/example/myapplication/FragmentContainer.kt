@@ -37,7 +37,6 @@ import androidx.fragment.app.*
 @Composable
 fun FragmentContainer(
     modifier: Modifier = Modifier,
-    fragmentManager: FragmentManager,
     commit: FragmentTransaction.(containerId: Int) -> Unit
 ) {
     val localView = LocalView.current
