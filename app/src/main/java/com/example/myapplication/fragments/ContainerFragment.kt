@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.fragments
 
 import android.graphics.Color
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.example.myapplication.R
 
 class ContainerFragment : Fragment() {
 
@@ -38,7 +39,9 @@ class ContainerFragment : Fragment() {
         arguments?.let {
             val key = it.getString(KEY)
             view.findViewById<TextView>(R.id.text_title).text = key
-            view.findViewById<View>(R.id.container).setBackgroundColor(Color.parseColor(it.getString(COLOR)))
+            view.findViewById<View>(R.id.container).setBackgroundColor(Color.parseColor(it.getString(
+                COLOR
+            )))
 
 
             view.findViewById<View>(R.id.button_open_child_fragment).setOnClickListener {

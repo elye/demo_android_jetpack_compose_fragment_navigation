@@ -1,38 +1,15 @@
-package com.example.myapplication
+package com.example.myapplication.option.restorable
 
 import android.content.Context
-import android.util.SparseArray
 import android.view.View
-import android.view.ViewGroup
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.compose.ui.viewinterop.AndroidViewBinding
 import androidx.fragment.app.*
-
-//@Composable
-//fun FragmentContainer(
-//    modifier: Modifier = Modifier,
-//    fragmentManager: FragmentManager,
-//    commit: FragmentTransaction.(containerId: Int) -> Unit
-//) {
-//    val containerId by rememberSaveable { mutableStateOf(View.generateViewId()) }
-//    AndroidView(
-//        modifier = modifier,
-//        factory = { context ->
-//            fragmentManager.findFragmentById(containerId)?.view
-//                ?.also { (it.parent as? ViewGroup)?.removeView(it) }
-//                ?: FragmentContainerView(context)
-//                    .apply { id = containerId }
-//                    .also {
-//                        fragmentManager.commit { commit(it.id) }
-//                    }
-//        },
-//        update = {}
-//    )
-//}
 
 @Composable
 fun FragmentContainer(

@@ -14,7 +14,7 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".EntryActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.MyApplication">
@@ -24,6 +24,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".option.restorable.RestorableActivity" />
+        <activity android:name=".option.restorable.NonRestorableActivity" />
+        <activity android:name=".option.persisted.PersistedActivity" />
+        <activity android:name=".option.stackoverflow.StackOverflowActivity" />
+        <activity android:name=".option.nofragment.NoFragmentActivity" />
     </application>
 
 </manifest>

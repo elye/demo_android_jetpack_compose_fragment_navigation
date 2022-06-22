@@ -1,10 +1,9 @@
-package com.example.myapplication
+package com.example.myapplication.option.persisted
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.SparseArray
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -15,29 +14,17 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.myapplication.BottomNavigationBar
+import com.example.myapplication.TopBar
+import com.example.myapplication.option.restorable.RestorableActivity.Companion.SAVED_STATE_CONTAINER_KEY
+import com.example.myapplication.option.restorable.RestorableActivity.Companion.SAVED_STATE_CURRENT_TAB_KEY
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 
-class MainActivity : FragmentActivity() {
-    private var savedStateSparseArray = SparseArray<Fragment.SavedState>()
-    private var currentSelectItemId = 0
-
-    companion object {
-        const val SAVED_STATE_CONTAINER_KEY = "ContainerKey"
-        const val SAVED_STATE_CURRENT_TAB_KEY = "CurrentTabKey"
-    }
-
+class PersistedActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (savedInstanceState != null) {
-            savedStateSparseArray = savedInstanceState.getSparseParcelableArray(SAVED_STATE_CONTAINER_KEY)
-                ?: savedStateSparseArray
-            currentSelectItemId = savedInstanceState.getInt(SAVED_STATE_CURRENT_TAB_KEY)
-        }
         setContent {
             MyApplicationTheme {
                 // A surface container using the 'background' color from the theme
@@ -49,12 +36,6 @@ class MainActivity : FragmentActivity() {
                 }
             }
         }
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putSparseParcelableArray(SAVED_STATE_CONTAINER_KEY, savedStateSparseArray)
-        outState.putInt(SAVED_STATE_CURRENT_TAB_KEY, currentSelectItemId)
     }
 
     override fun onBackPressed() {
@@ -79,7 +60,7 @@ class MainActivity : FragmentActivity() {
         Scaffold(
             topBar = { TopBar() },
             bottomBar = { BottomNavigationBar(navController) }
-        ) { Navigation(navController, ::getCommitFunction) }
+        ) { Navigation(navController, supportFragmentManager, ::getCommitFunction) }
     }
 
     private fun getCommitFunction(
@@ -87,23 +68,8 @@ class MainActivity : FragmentActivity() {
         tag: String
     ): FragmentTransaction.(containerId: Int) -> Unit =
         {
-            saveAndRetrieveFragment(supportFragmentManager, it, fragment)
             replace(it, fragment, tag)
         }
-
-    private fun saveAndRetrieveFragment(
-        supportFragmentManager: FragmentManager,
-        it: Int,
-        fragment: Fragment
-    ) {
-        val currentFragment = supportFragmentManager.findFragmentById(currentSelectItemId)
-        if (currentFragment != null) {
-            savedStateSparseArray.put(
-                currentSelectItemId,
-                supportFragmentManager.saveFragmentInstanceState(currentFragment)
-            )
-        }
-        currentSelectItemId = it
-        fragment.setInitialSavedState(savedStateSparseArray[currentSelectItemId])
-    }
 }
+
+
