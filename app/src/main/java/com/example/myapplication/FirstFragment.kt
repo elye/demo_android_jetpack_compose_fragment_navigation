@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 
 class FirstFragment: Fragment() {
@@ -21,6 +22,10 @@ class FirstFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("Track", "I am onViewCreated")
+
+        view.findViewById<Button>(R.id.click_me_btn).setOnClickListener {
+            Log.d("Track", "I'm clicked")
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

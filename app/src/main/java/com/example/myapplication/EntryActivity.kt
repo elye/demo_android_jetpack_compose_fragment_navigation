@@ -17,6 +17,7 @@ import com.example.myapplication.option.persisted.PersistedActivity
 import com.example.myapplication.option.restorable.NonRestorableActivity
 import com.example.myapplication.option.restorable.RestorableActivity
 import com.example.myapplication.option.stackoverflow.StackOverflowActivity
+import com.example.myapplication.option.viewbinding.ViewBindFragmentActivity
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 class EntryActivity: ComponentActivity() {
@@ -46,6 +47,14 @@ class EntryActivity: ComponentActivity() {
                 )
             }) {
                 Text("No Fragment Normal Bottom Sheet")
+            }
+            Button(onClick = {
+                startActivity(Intent(
+                    this@EntryActivity,
+                    ViewBindFragmentActivity::class.java)
+                )
+            }) {
+                Text("Google View Binding Fragment Bottom Sheet")
             }
             Button(onClick = {
                 startActivity(Intent(

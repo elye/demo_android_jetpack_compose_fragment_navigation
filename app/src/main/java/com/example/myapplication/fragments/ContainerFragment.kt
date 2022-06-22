@@ -70,5 +70,4 @@ class ContainerFragment : Fragment() {
         super.onStop()
         Log.d("Track", "ContainerFragment onStop")
     }
-
 }

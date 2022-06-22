@@ -11,11 +11,21 @@
         <entry key="../../../../../layout/compose-model-1655725995388.xml" value="0.1" />
         <entry key="../../../../../layout/compose-model-1655726289104.xml" value="1.0" />
         <entry key="../../../../../layout/compose-model-1655861085798.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1655864679994.xml" value="0.1" />
+        <entry key="../../../../../layout/compose-model-1655866537853.xml" value="0.7762237762237763" />
+        <entry key="../../../../../layout/compose-model-1655867611874.xml" value="0.8129370629370629" />
+        <entry key="../../../../../layout/compose-model-1655868745682.xml" value="0.1" />
         <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_home.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_child.xml" value="0.21510416666666668" />
         <entry key="app/src/main/res/layout/fragment_container.xml" value="0.11927083333333334" />
         <entry key="app/src/main/res/layout/fragment_container1.xml" value="0.21510416666666668" />
         <entry key="app/src/main/res/layout/fragment_container2.xml" value="0.1953125" />
+        <entry key="app/src/main/res/layout/fragment_container_books.xml" value="0.21770833333333334" />
+        <entry key="app/src/main/res/layout/fragment_container_movies.xml" value="0.21770833333333334" />
+        <entry key="app/src/main/res/layout/fragment_container_music.xml" value="0.21770833333333334" />
+        <entry key="app/src/main/res/layout/fragment_container_profile.xml" value="0.21770833333333334" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.20108695652173914" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.20520833333333333" />
       </map>

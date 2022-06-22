@@ -4,23 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello 111" />
-
-<!--    <FrameLayout-->
-<!--        android:background="@color/teal_200"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_weight="1"-->
-<!--        android:id="@+id/container" />-->
-
     <androidx.fragment.app.FragmentContainerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/fragment_container_view"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:name="com.example.myapplication.FirstFragment" />
+        android:name="com.example.myapplication.option.viewbinding.ProfileContainerFragment" />
 
 </LinearLayout>

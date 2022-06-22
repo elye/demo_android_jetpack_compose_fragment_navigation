@@ -28,6 +28,7 @@
         <activity android:name=".option.restorable.NonRestorableActivity" />
         <activity android:name=".option.persisted.PersistedActivity" />
         <activity android:name=".option.stackoverflow.StackOverflowActivity" />
+        <activity android:name=".option.viewbinding.ViewBindFragmentActivity" />
         <activity android:name=".option.nofragment.NoFragmentActivity" />
     </application>
 
