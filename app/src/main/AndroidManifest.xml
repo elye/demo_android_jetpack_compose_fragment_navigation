@@ -24,12 +24,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".option.restorable.RestorableActivity" />
-        <activity android:name=".option.restorable.NonRestorableActivity" />
-        <activity android:name=".option.persisted.PersistedActivity" />
-        <activity android:name=".option.stackoverflow.StackOverflowActivity" />
-        <activity android:name=".option.viewbinding.ViewBindFragmentActivity" />
-        <activity android:name=".option.nofragment.NoFragmentActivity" />
+        <activity android:name=".option.restorable.RestorableActivity"
+            android:label="Restorable"
+            />
+        <activity android:name=".option.restorable.NonRestorableActivity"
+            android:label="Non-Restorable" />
+        <activity android:name=".option.persisted.PersistedActivity"
+            android:label="Persisted" />
+        <activity android:name=".option.stackoverflow.StackOverflowActivity"
+            android:label="StackOverflow" />
+        <activity android:name=".option.viewbinding.ViewBindFragmentActivity"
+            android:label="AndroidViewBinding" />
+        <activity android:name=".option.nofragment.NoFragmentActivity"
+            android:label="No Fragment" />
     </application>
 
 </manifest>
