@@ -93,7 +93,7 @@ class RestorableActivity : FragmentActivity() {
 
     private fun saveAndRetrieveFragment(
         supportFragmentManager: FragmentManager,
-        it: Int,
+        tabId: Int,
         fragment: Fragment
     ) {
         val currentFragment = supportFragmentManager.findFragmentById(currentSelectItemId)
@@ -103,7 +103,7 @@ class RestorableActivity : FragmentActivity() {
                 supportFragmentManager.saveFragmentInstanceState(currentFragment)
             )
         }
-        currentSelectItemId = it
+        currentSelectItemId = tabId
         fragment.setInitialSavedState(savedStateSparseArray[currentSelectItemId])
     }
 }
