@@ -16,6 +16,7 @@ import com.example.myapplication.option.nofragment.NoFragmentActivity
 import com.example.myapplication.option.persisted.PersistedActivity
 import com.example.myapplication.option.restorable.NonRestorableActivity
 import com.example.myapplication.option.restorable.RestorableActivity
+import com.example.myapplication.option.restorable.RestorableTabActivity
 import com.example.myapplication.option.stackoverflow.StackOverflowActivity
 import com.example.myapplication.option.viewbinding.ViewBindFragmentActivity
 import com.example.myapplication.ui.theme.MyApplicationTheme
@@ -87,6 +88,14 @@ class EntryActivity: ComponentActivity() {
                 )
             }) {
                 Text("Pop and Restore-able Fragments in Bottom Sheet")
+            }
+            Button(onClick = {
+                startActivity(Intent(
+                    this@EntryActivity,
+                    RestorableTabActivity::class.java)
+                )
+            }) {
+                Text("Pop and Restore-able Fragments in Simple Tab")
             }
         }
     }

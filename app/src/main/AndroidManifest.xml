@@ -24,9 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".option.restorable.RestorableTabActivity"
+            android:label="Restorable-Tab" />
         <activity android:name=".option.restorable.RestorableActivity"
-            android:label="Restorable"
-            />
+            android:label="Restorable" />
         <activity android:name=".option.restorable.NonRestorableActivity"
             android:label="Non-Restorable" />
         <activity android:name=".option.persisted.PersistedActivity"

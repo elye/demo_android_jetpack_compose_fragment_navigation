@@ -57,7 +57,6 @@ class ViewBindFragmentActivity : FragmentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     fun MainScreen() {
         val navController = rememberNavController()
-        BottomNavigationBar(navController)
         Scaffold(
             topBar = { TopBar() },
             bottomBar = { BottomNavigationBar(navController) }

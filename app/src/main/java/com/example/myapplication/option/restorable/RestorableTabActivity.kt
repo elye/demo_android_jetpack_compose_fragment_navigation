@@ -1,9 +1,10 @@
-package com.example.myapplication.option.stackoverflow
+package com.example.myapplication.option.restorable
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.SparseArray
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
@@ -16,15 +17,29 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.compose.rememberNavController
 import com.example.myapplication.BottomNavigationBar
+import com.example.myapplication.TabHeader
 import com.example.myapplication.TopBar
-import com.example.myapplication.option.restorable.RestorableActivity.Companion.SAVED_STATE_CONTAINER_KEY
-import com.example.myapplication.option.restorable.RestorableActivity.Companion.SAVED_STATE_CURRENT_TAB_KEY
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
 
-class StackOverflowActivity : FragmentActivity() {
+class RestorableTabActivity : FragmentActivity() {
+    private var savedStateSparseArray = SparseArray<Fragment.SavedState>()
+    private var currentSelectItemId = 0
+
+    companion object {
+        const val SAVED_STATE_CONTAINER_KEY = "ContainerKey"
+        const val SAVED_STATE_CURRENT_TAB_KEY = "CurrentTabKey"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (savedInstanceState != null) {
+            savedStateSparseArray = savedInstanceState.getSparseParcelableArray(
+                SAVED_STATE_CONTAINER_KEY
+            )
+                ?: savedStateSparseArray
+            currentSelectItemId = savedInstanceState.getInt(SAVED_STATE_CURRENT_TAB_KEY)
+        }
         setContent {
             MyApplicationTheme {
                 // A surface container using the 'background' color from the theme
@@ -36,6 +51,12 @@ class StackOverflowActivity : FragmentActivity() {
                 }
             }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSparseParcelableArray(SAVED_STATE_CONTAINER_KEY, savedStateSparseArray)
+        outState.putInt(SAVED_STATE_CURRENT_TAB_KEY, currentSelectItemId)
     }
 
     override fun onBackPressed() {
@@ -58,8 +79,12 @@ class StackOverflowActivity : FragmentActivity() {
         val navController = rememberNavController()
         Scaffold(
             topBar = { TopBar() },
-            bottomBar = { BottomNavigationBar(navController) }
-        ) { Navigation(navController, supportFragmentManager, ::getCommitFunction) }
+        ) {
+            Column {
+                TabHeader(navController)
+                Navigation(navController, ::getCommitFunction)
+            }
+        }
     }
 
     private fun getCommitFunction(
@@ -67,8 +92,23 @@ class StackOverflowActivity : FragmentActivity() {
         tag: String
     ): FragmentTransaction.(containerId: Int) -> Unit =
         {
+            saveAndRetrieveFragment(supportFragmentManager, it, fragment)
             replace(it, fragment, tag)
         }
+
+    private fun saveAndRetrieveFragment(
+        supportFragmentManager: FragmentManager,
+        tabId: Int,
+        fragment: Fragment
+    ) {
+        val currentFragment = supportFragmentManager.findFragmentById(currentSelectItemId)
+        if (currentFragment != null) {
+            savedStateSparseArray.put(
+                currentSelectItemId,
+                supportFragmentManager.saveFragmentInstanceState(currentFragment)
+            )
+        }
+        currentSelectItemId = tabId
+        fragment.setInitialSavedState(savedStateSparseArray[currentSelectItemId])
+    }
 }
-
-
