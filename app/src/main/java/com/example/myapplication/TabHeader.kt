@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.currentBackStackEntryAsState
 
 @Composable
 fun TabHeader(navController: NavHostController) {
@@ -31,7 +32,10 @@ fun TabHeader(navController: NavHostController) {
         selectedTabIndex = selectedTabIndex,
         backgroundColor = Color.Gray,
     ) {
-        tabs.forEachIndexed { index, item ->
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = navBackStackEntry?.destination?.route
+        tabs.forEach { item ->
+            selectedTabIndex = tabs.indexOf(tabs.find {it.route == currentRoute })
             Tab(
                 text = {
                     Column (horizontalAlignment = CenterHorizontally) {
@@ -44,9 +48,8 @@ fun TabHeader(navController: NavHostController) {
                         )
                     }
                 },
-                selected = selectedTabIndex == index,
+                selected = currentRoute == item.route,
                 onClick = {
-                    selectedTabIndex = index
                     navController.navigate(item.route) {
                         // Pop up to the start destination of the graph to
                         // avoid building up a large stack of destinations
